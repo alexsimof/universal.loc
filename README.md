@@ -1,2 +1,2 @@
-# universal.loc
+# Universal.loc
 ## Учебный проект
