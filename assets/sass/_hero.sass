@@ -1,0 +1,136 @@
+.home
+    background-color: #e5e5e5
+.front-page-header
+    padding-top: 30px
+    background-color: #262D33
+    position: relative
+    height: 500px
+.hero
+    position: relative
+    background-color: #fff
+    display: flex
+    overflow: hidden
+    border-radius: 10px
+    min-height: 570px
+    z-index: 1
+.left
+    flex-basis: 75%
+    position: relative
+    padding: 55px 55px 100px 55px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    &::after
+        content: ''
+        width: 100%
+        height: 100%
+        background-color: rgba(#40303D,0.4)
+        position: absolute
+        left: 0
+        top: 0
+        z-index: 1
+.post-thumb
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    z-index: 0
+    height: 100%
+
+.author
+    display: flex
+    align-items: center
+    text-decoration: none
+    z-index: 2
+    .avatar
+        width: 45px
+        height: 45px
+        border-radius: 50%
+    &-bio
+        margin-left: 10px
+    &-name
+        display: block
+        font-size: 14px
+        line-height: 20px
+        color: rgba(#fff, 0.85)
+
+    &-rank
+        font-size: 12px
+        line-height: 15px
+        color: rgba(#fff,0.4)
+
+.post-text
+    z-index: 2
+    .post
+        &-categories
+            padding: 0
+            margin: 0
+            list-style: none
+            a
+                color: #4592FF
+                text-transform: uppercase
+                text-decoration: none
+                font-weight: 900
+                font-size: 12px
+                line-height: 15px
+
+        &-title
+            font-family: Roboto Slab
+            font-weight: bold
+            font-size: 40px
+            line-height: 50px
+            color: #fff
+            margin-top: 20px
+            margin-bottom: 50px
+            max-width: 600px
+    .more
+        padding-left: 20px
+        padding-top: 10px
+        padding-right: 50px
+        padding-bottom: 10px
+        color: #fff
+        background-color: #4592FF
+        text-decoration: none
+        border-radius: 20px
+        background-image: url(../images/arrow.svg)
+        background-repeat: no-repeat
+        background-position: center right 20px
+
+.right
+    flex-basis: 25%
+.posts-list
+    list-style: none
+    padding: 0
+    margin: 0
+    height: 100%
+.recommend
+    margin: 20px 25px
+    text-transform: uppercase
+.post
+    margin: 0
+    max-height: 110px
+    padding: 17px 25px 19px 25px
+    border-top: 1px solid #D9DADB
+    &-categories
+        padding: 0
+        margin: 0
+        list-style: none
+        a
+            font-weight: 900
+            font-size: 12px
+            line-height: 15px
+            color: #3BBDC4
+            text-transform: uppercase
+            text-decoration: none
+    &-permalink
+        text-decoration: none
+    &:hover
+        background: #f5f5f5
+
+    &-title
+        font-size: 14px
+        line-height: 20px
+        font-weight: normal
+        color: #4B5157
+        margin-top: 8px
