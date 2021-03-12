@@ -378,7 +378,8 @@ function edit_widget_tag_cloud($args){
 	$args['unit'] = 'px';
 	$args['smallest'] = '14';
 	$args['largest'] = '14';
-	$args['number'] = '13';
+	$args['number'] = '12';
+	$args['order'] = 'RAND';
 
 	return $args;
 };

@@ -240,7 +240,7 @@ body {
   max-width: 600px;
 }
 
-.post-text .more {
+.more {
   padding-left: 20px;
   padding-top: 10px;
   padding-right: 50px;
@@ -252,6 +252,10 @@ body {
   background-image: url(../images/arrow.svg);
   background-repeat: no-repeat;
   background-position: center right 20px;
+}
+
+.more:hover, .more:focus, .more:visited {
+  color: #fff;
 }
 
 .right {
@@ -312,7 +316,7 @@ body {
 .article-list {
   margin: 0;
   padding: 0;
-  margin-top: 150px;
+  margin-top: 170px;
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -820,4 +824,128 @@ body {
 .widget-social-facebook, .widget-social-insta, .widget-social-twitter, .widget-social-youtube {
   margin-bottom: 20px;
   margin-left: 10px;
+}
+
+.investigation {
+  margin: 40px 0 60px;
+  padding: 50px 0 55px;
+  text-align: center;
+  color: #fff;
+}
+
+.investigation-title {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
+}
+
+.records-list {
+  width: 848px;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 60px;
+}
+
+.records-item {
+  list-style: none;
+  padding: 25px;
+  position: relative;
+  z-index: 0;
+}
+
+.records-permalink {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.records-permalink::after {
+  content: ' ';
+  border-bottom: 1px solid #D9DADB;
+  position: absolute;
+  z-index: 1;
+  width: 798px;
+  bottom: 0;
+}
+
+.records-permalink::last-child {
+  border: none;
+}
+
+.records-category {
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.records-img {
+  height: 195px;
+  width: 336px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.records-name {
+  margin-left: 25px;
+}
+
+.records-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.records-title {
+  width: 437px;
+  font-family: "Roboto Slab" sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 25px;
+  color: #262D33;
+}
+
+.records-description {
+  font-size: 14px;
+  line-height: 20px;
+  color: #4B5157;
+}
+
+.records-info .info-date {
+  margin-right: 10px;
+  color: #939699;
+}
+
+.records-info .info-icon {
+  margin-right: 5px;
+  color: #939699;
+}
+
+.records-info .info-count {
+  margin-right: 10px;
+  color: #939699;
+}
+
+.records-info .info-likes-icon {
+  margin-right: 5px;
+  color: #939699;
+}
+
+.records-info .info-likes-count {
+  color: #939699;
 }

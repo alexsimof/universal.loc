@@ -222,4 +222,74 @@
         <?php get_sidebar(); ?>
     </div>
 </div>
+<?php
+    global $post;
 
+    $myposts = get_posts([ 
+        'numberposts' => 1,
+        'category_name'  => 'investigation',
+    ]);
+
+    if( $myposts ){
+        foreach( $myposts as $post ){
+            setup_postdata( $post );
+    ?>
+    <section class="investigation" style="background: linear-gradient(0deg, rgba(64, 48, 61, 0.45), rgba(64, 48, 61, 0.45)), url(<?php echo get_the_post_thumbnail_url(); ?>) no-repeat center center">
+        <div class="container">
+            <h2 class="investigation-title"><?php the_title(); ?></h2>
+            <a href="<?php echo get_the_permalink(); ?>" class="more">Читать далее</a>
+        </div>
+    </section>
+
+    <?php 
+        }
+    } else {
+        // Постов не найдено
+    }
+        wp_reset_postdata(); // Сбрасываем $post
+?>
+<div class="container">
+    <ul class="records-list">
+        <?php
+        global $post;
+
+        $myposts = get_posts([ 
+            'numberposts' => 6,
+            'category' => '48,49,50,51',
+
+        ]);
+
+        if( $myposts ){
+            foreach( $myposts as $post ){
+                setup_postdata( $post );
+        ?>
+                <!-- Вывода постов, функции цикла: the_title() и т.д. -->
+        <li class="records-item">
+            <a class="records-permalink" href="<?php the_permalink(); ?>">
+                <img class="records-img" src="<?php the_post_thumbnail_url(); ?>" alt="Изображение записи">
+                <div class="records-name">
+                    <span class="records-category">
+                    <?php $category = get_the_category(); echo $category[0]->name;?></span>
+                    <h2 class="records-title"><?php the_title(); ?></h2>
+                    <p class="records-description"><?php echo mb_strimwidth(get_the_excerpt(), 0, 160, ' ... '); ?></p>
+                    <div class="records-info">
+                        <span class="info-date"><?php the_time('j F');?></span>
+                        <img class="info-icon" src="<?php echo get_template_directory_uri() . '/assets/images/comment.svg'?>" alt="Иконка комментарий">
+                        <span class="info-count"> <?php comments_number( '0', '1', '%'); ?></span>
+                        <img class="info-likes-icon" src="<?php echo get_template_directory_uri() . '/assets/images/heart-silver.svg'?>" alt="Иконка лайков сердечко">
+                        <span class="info-likes-count"> <?php comments_number( '0', '1', '%'); ?></span>
+                    </div>
+                </div>
+                
+            </a>
+        </li>
+        <?php 
+            }
+        } else {
+            // Постов не найдено
+        }
+
+        wp_reset_postdata(); // Сбрасываем $post
+        ?>
+    </ul>
+</div>
