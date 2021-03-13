@@ -68,14 +68,6 @@
             padding: 0
             margin: 0
             list-style: none
-            a
-                color: #4592FF
-                text-transform: uppercase
-                text-decoration: none
-                font-weight: 900
-                font-size: 12px
-                line-height: 15px
-
         &-title
             font-family: Roboto Slab
             font-weight: bold
@@ -85,6 +77,14 @@
             margin-top: 20px
             margin-bottom: 50px
             max-width: 600px
+.category-link
+    text-transform: uppercase
+    text-decoration: none
+    font-weight: 900
+    font-size: 12px
+    line-height: 15px
+    &.javascript
+        color: #4592FF
 .more
     padding-left: 20px
     padding-top: 10px
@@ -119,13 +119,7 @@
         padding: 0
         margin: 0
         list-style: none
-        a
-            font-weight: 900
-            font-size: 12px
-            line-height: 15px
-            color: #3BBDC4
-            text-transform: uppercase
-            text-decoration: none
+
     &-permalink
         text-decoration: none
     &:hover
@@ -137,3 +131,18 @@
         font-weight: normal
         color: #4B5157
         margin-top: 8px
+    .category-link
+        font-weight: 900
+        font-size: 12px
+        line-height: 15px
+        color: #3BBDC4
+        text-transform: uppercase
+        text-decoration: none
+        &.css
+            color: #3BBDC4
+        &.javascript
+            color: #6E99AE
+        &.html
+            color: #AC8EE3
+        &.web-design
+            color: #FFA34D

@@ -26,7 +26,16 @@
                         </div>
                     </a>
                     <div class="post-text">
-                        <?php the_category(); ?>
+                        <?php 
+                            foreach (get_the_category() as $category) {
+                                printf(
+                                    '<a href="%s" class="category-link %s">%s</a>',
+                                    esc_url( get_category_link( $category ) ),
+                                    esc_html( $category -> slug ),
+                                    esc_html( $category -> name ),
+                                );
+                            }
+                        ?>
                         <h2 class="post-title"><?php echo mb_strimwidth(get_the_title(), 0, 60, ' ... '); ?></h2>
                         <a href="<?php echo get_the_permalink(); ?>" class="more">Читать далее</a>
                     </div>
@@ -48,7 +57,7 @@
                     $myposts = get_posts([ 
                     	'numberposts' => 5,
                         'offset' => 1,
-
+                        'category_name'  => 'javaScript, css, html, web design',
                     ]);
 
                     if( $myposts ){
@@ -56,7 +65,16 @@
                     		setup_postdata( $post );
                     ?>
                     <li class="post">
-                        <?php the_category(); ?>
+                            <?php 
+                                foreach (get_the_category() as $category) {
+                                    printf(
+                                        '<a href="%s" class="category-link %s">%s</a>',
+                                        esc_url( get_category_link( $category ) ),
+                                        esc_html( $category -> slug ),
+                                        esc_html( $category -> name ),
+                                    );
+                                }
+                            ?>
                         <a class="post-permalink" href="<?php echo get_the_permalink() ?>">
                             <h4 class="post-title"><?php echo mb_strimwidth(get_the_title(), 0, 60, ' ... '); ?></h4>
                         </a>
@@ -103,6 +121,7 @@
             wp_reset_postdata(); // Сбрасываем $post
         ?>
     </ul>
+ <!-- grid посты -->
     <div class="main-grid">
         <ul class="article-grid">
             <?php		
@@ -202,7 +221,7 @@
                             <li class="article-grid-item article-grid-item-default">
                                 <a href="<?php the_permalink(); ?>" class="article-grid-permalink">
                                     <h4 class="article-grid-title"><?php echo mb_strimwidth(get_the_title(), 0, 20, ' ... '); ?></h4>
-                                    <p class="article-grid-texte"><?php echo mb_strimwidth(get_the_excerpt(), 0, 50, ' ... '); ?></p>
+                                    <p class="article-grid-texte"><?php echo mb_strimwidth(get_the_excerpt(), 0, 60, ' ... '); ?></p>
                                     <span class="article-grid-date"><?php the_time('j F');?></span>
                                 </a>
                             </li>
@@ -219,9 +238,10 @@
             wp_reset_postdata(); // Сбрасываем $post
             ?>
         </ul>
-        <?php get_sidebar(); ?>
+        <?php get_sidebar('home-top'); ?>
     </div>
 </div>
+<!-- investigation -->
 <?php
     global $post;
 
@@ -248,48 +268,63 @@
     }
         wp_reset_postdata(); // Сбрасываем $post
 ?>
+<!-- вывод постов с большой обложкой -->
 <div class="container">
-    <ul class="records-list">
-        <?php
-        global $post;
+    <div class="main-records">
+        <ul class="records-list">
+            <?php
+            global $post;
 
-        $myposts = get_posts([ 
-            'numberposts' => 6,
-            'category' => '48,49,50,51',
+            $myposts = get_posts([ 
+                'numberposts' => 6,
+                'category' => '48,49,50,51',
 
-        ]);
+            ]);
 
-        if( $myposts ){
-            foreach( $myposts as $post ){
-                setup_postdata( $post );
-        ?>
-                <!-- Вывода постов, функции цикла: the_title() и т.д. -->
-        <li class="records-item">
-            <a class="records-permalink" href="<?php the_permalink(); ?>">
-                <img class="records-img" src="<?php the_post_thumbnail_url(); ?>" alt="Изображение записи">
-                <div class="records-name">
-                    <span class="records-category">
-                    <?php $category = get_the_category(); echo $category[0]->name;?></span>
-                    <h2 class="records-title"><?php the_title(); ?></h2>
-                    <p class="records-description"><?php echo mb_strimwidth(get_the_excerpt(), 0, 160, ' ... '); ?></p>
-                    <div class="records-info">
-                        <span class="info-date"><?php the_time('j F');?></span>
-                        <img class="info-icon" src="<?php echo get_template_directory_uri() . '/assets/images/comment.svg'?>" alt="Иконка комментарий">
-                        <span class="info-count"> <?php comments_number( '0', '1', '%'); ?></span>
-                        <img class="info-likes-icon" src="<?php echo get_template_directory_uri() . '/assets/images/heart-silver.svg'?>" alt="Иконка лайков сердечко">
-                        <span class="info-likes-count"> <?php comments_number( '0', '1', '%'); ?></span>
-                    </div>
-                </div>
+            if( $myposts ){
+                foreach( $myposts as $post ){
+                    setup_postdata( $post );
+            ?>
+                    <!-- Вывода постов, функции цикла: the_title() и т.д. -->
+            <li class="records-item">
                 
-            </a>
-        </li>
-        <?php 
+                    <img class="records-img" src="<?php the_post_thumbnail_url(); ?>" alt="Изображение записи">
+                    <div class="records-name">
+                        
+                            <?php 
+                                foreach (get_the_category() as $category) {
+                                    printf(
+                                        '<a href="%s" class="category-link %s">%s</a>',
+                                        esc_url( get_category_link( $category ) ),
+                                        esc_html( $category -> slug ),
+                                        esc_html( $category -> name ),
+                                    );
+                                }
+                            ?>
+                        
+                        
+                        <h2 class="records-title"><?php the_title(); ?></h2>
+                        <p class="records-description"><?php echo mb_strimwidth(get_the_excerpt(), 0, 160, ' ... '); ?></p>
+                        <div class="records-info">
+                            <span class="info-date"><?php the_time('j F');?></span>
+                            <img class="info-icon" src="<?php echo get_template_directory_uri() . '/assets/images/comment.svg'?>" alt="Иконка комментарий">
+                            <span class="info-count"> <?php comments_number( '0', '1', '%'); ?></span>
+                            <img class="info-likes-icon" src="<?php echo get_template_directory_uri() . '/assets/images/heart-silver.svg'?>" alt="Иконка лайков сердечко">
+                            <span class="info-likes-count"> <?php comments_number( '0', '1', '%'); ?></span>
+                        </div>
+                    </div>
+                    
+                
+            </li>
+            <?php 
+                }
+            } else {
+                // Постов не найдено
             }
-        } else {
-            // Постов не найдено
-        }
 
-        wp_reset_postdata(); // Сбрасываем $post
-        ?>
-    </ul>
+            wp_reset_postdata(); // Сбрасываем $post
+            ?>
+        </ul>
+        <?php get_sidebar('home-bottom'); ?>
+    </div>
 </div>
