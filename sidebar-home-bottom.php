@@ -12,6 +12,7 @@ if ( ! is_active_sidebar( 'post-sidebar' ) ) {
 }
 ?>
 
-<aside id="secondary" class="sidebar-front-page">
+<aside class="sidebar-front-page">
 	<?php dynamic_sidebar( 'post-sidebar' ); ?>
-</aside><!-- #secondary -->
+</aside>
+<!-- sidebar-front-page -->

@@ -52,6 +52,28 @@ function universal_theme_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Меню в подвале', 'universal-theme' ),
+			'id'            => 'sidebar-footer',
+			'description'   => esc_html__( 'Добавте меню сюда...', 'universal-theme' ),
+			'before_widget' => '<section id="%1$s" class="footer-menu %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="footer-menu-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Текст в подвале', 'universal-theme' ),
+			'id'            => 'sidebar-footer-text',
+			'description'   => esc_html__( 'Добавте текст сюда...', 'universal-theme' ),
+			'before_widget' => '<section id="%1$s" class="footer-text %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '',
+			'after_title'   => '',
+		)
+	);
 }
 add_action( 'widgets_init', 'universal_theme_widgets_init' );
 
@@ -242,29 +264,29 @@ class Social_Widget extends WP_Widget {
 	function widget( $args, $instance ) {
 
 		$title = $instance['title'];
-		$link_f = $instance['link_f'];
-		$link_i = $instance['link_i'];
-		$link_t = $instance['link_t'];
-		$link_y = $instance['link_y'];
+		$facebook = $instance['facebook'];
+		$instagram = $instance['instagram'];
+		$twitter = $instance['twitter'];
+		$youtube = $instance['youtube'];
 
 		echo $args['before_widget'];
 		if ( ! empty( $title ) ) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
-        if ( ! empty( $link_f ) ) {
-			echo '<a target= "_blank" class="widget-link-facebook" href="' . $link_f . '">
+        if ( ! empty( $facebook ) ) {
+			echo '<a target= "_blank" class="widget-link-facebook" href="' . $facebook . '">
 			<img src="' . get_template_directory_uri() . '/assets/images/facebook.svg" alt="Иконка фейсбука" class="widget-social-facebook"></a>';
 		}
-		if ( ! empty( $link_i ) ) {
-			echo '<a target= "_blank" class="widget-link-insta" href="' . $link_i . '">
+		if ( ! empty( $instagram ) ) {
+			echo '<a target= "_blank" class="widget-link-insta" href="' . $instagram . '">
 			<img src="' . get_template_directory_uri() . '/assets/images/insta.png" alt="Иконка фейсбука" class="widget-social-insta"></a>';
 		}
-		if ( ! empty( $link_t ) ) {
-			echo '<a target= "_blank" class="widget-link-twitter" href="' . $link_t . '">
+		if ( ! empty( $twitter ) ) {
+			echo '<a target= "_blank" class="widget-link-twitter" href="' . $twitter . '">
 			<img src="' . get_template_directory_uri() . '/assets/images/twitter.svg" alt="Иконка твитера" class="widget-social-twitter"></a>';
 		}
-		if ( ! empty( $link_y ) ) {
-			echo '<a target= "_blank" class="widget-link-youtube" href="' . $link_y . '">
+		if ( ! empty( $youtube ) ) {
+			echo '<a target= "_blank" class="widget-link-youtube" href="' . $youtube . '">
 			<img src="' . get_template_directory_uri() . '/assets/images/youtube.svg" alt="Иконка ютюба" class="widget-social-youtube"></a>';
 		}
 		
@@ -278,10 +300,10 @@ class Social_Widget extends WP_Widget {
 	 */
 	function form( $instance ) {
 		$title = @ $instance['title'] ?: 'Введите заголовок';
-		$link_f = @ $instance['link_f'] ?: 'https://facebook.com';
-		$link_i = @ $instance['link_i'] ?: 'https://instagram.com';
-		$link_t = @ $instance['link_t'] ?: 'https://twitter.com';
-		$link_y = @ $instance['link_y'] ?: 'https://yuotube.com';
+		$facebook = @ $instance['facebook'] ?: 'https://facebook.com';
+		$instagram = @ $instance['instagram'] ?: 'https://instagram.com';
+		$twitter = @ $instance['twitter'] ?: 'https://twitter.com';
+		$youtube = @ $instance['youtube'] ?: 'https://youtube.com';
 
 		?>
 		<p>
@@ -289,20 +311,20 @@ class Social_Widget extends WP_Widget {
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
         <p>
-			<label for="<?php echo $this->get_field_id( 'link_f' ); ?>"><?php _e( 'Ссылка на Facebook:' ); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id( 'link_f' ); ?>" name="<?php echo $this->get_field_name( 'link_f' ); ?>" type="text" value="<?php echo esc_attr( $link_f ); ?>">
+			<label for="<?php echo $this->get_field_id( 'facebook' ); ?>"><?php _e( 'Ссылка на Facebook:' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'facebook' ); ?>" name="<?php echo $this->get_field_name( 'facebook' ); ?>" type="text" value="<?php echo esc_attr( $facebook ); ?>">
 		</p>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'link_i' ); ?>"><?php _e( 'Ссылка на Instagram:' ); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id( 'link_i' ); ?>" name="<?php echo $this->get_field_name( 'link_i' ); ?>" type="text" value="<?php echo esc_attr( $link_i ); ?>">
+			<label for="<?php echo $this->get_field_id( 'instagram' ); ?>"><?php _e( 'Ссылка на Instagram:' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'instagram' ); ?>" name="<?php echo $this->get_field_name( 'instagram' ); ?>" type="text" value="<?php echo esc_attr( $instagram ); ?>">
 		</p>
         <p>
-            <label for="<?php echo $this->get_field_id( 'link_t' ); ?>"><?php _e( 'Ссылка на Twitter:' ); ?></label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'link_t' ); ?>" name="<?php echo $this->get_field_name( 'link_t' ); ?>" type="text" value="<?php echo esc_attr( $link_t ); ?>">
+            <label for="<?php echo $this->get_field_id( 'twitter' ); ?>"><?php _e( 'Ссылка на Twitter:' ); ?></label> 
+            <input class="widefat" id="<?php echo $this->get_field_id( 'twitter' ); ?>" name="<?php echo $this->get_field_name( 'twitter' ); ?>" type="text" value="<?php echo esc_attr( $twitter ); ?>">
         </p>
 		<p>
-            <label for="<?php echo $this->get_field_id( 'link_y' ); ?>"><?php _e( 'Ссылка на Youtube:' ); ?></label> 
-            <input class="widefat" id="<?php echo $this->get_field_id( 'link_y' ); ?>" name="<?php echo $this->get_field_name( 'link_y' ); ?>" type="text" value="<?php echo esc_attr( $link_y ); ?>">
+            <label for="<?php echo $this->get_field_id( 'youtube' ); ?>"><?php _e( 'Ссылка на Youtube:' ); ?></label> 
+            <input class="widefat" id="<?php echo $this->get_field_id( 'youtube' ); ?>" name="<?php echo $this->get_field_name( 'youtube' ); ?>" type="text" value="<?php echo esc_attr( $youtube ); ?>">
         </p>
 
 		<?php 
@@ -321,10 +343,10 @@ class Social_Widget extends WP_Widget {
 	function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		$instance['link_f'] = ( ! empty( $new_instance['link_f'] ) ) ? strip_tags( $new_instance['link_f'] ) : '';
-		$instance['link_i'] = ( ! empty( $new_instance['link_i'] ) ) ? strip_tags( $new_instance['link_i'] ) : '';
-		$instance['link_t'] = ( ! empty( $new_instance['link_t'] ) ) ? strip_tags( $new_instance['link_t'] ) : '';
-		$instance['link_y'] = ( ! empty( $new_instance['link_y'] ) ) ? strip_tags( $new_instance['link_y'] ) : '';
+		$instance['facebook'] = ( ! empty( $new_instance['facebook'] ) ) ? strip_tags( $new_instance['facebook'] ) : '';
+		$instance['instagram'] = ( ! empty( $new_instance['instagram'] ) ) ? strip_tags( $new_instance['instagram'] ) : '';
+		$instance['twitter'] = ( ! empty( $new_instance['twitter'] ) ) ? strip_tags( $new_instance['twitter'] ) : '';
+		$instance['youtube'] = ( ! empty( $new_instance['youtube'] ) ) ? strip_tags( $new_instance['youtube'] ) : '';
 
 		return $instance;
 	}
@@ -355,7 +377,7 @@ class Social_Widget extends WP_Widget {
 } 
 // конец класса Social_Widget
 
-// регистрация downloader_widget в WordPress
+// регистрация Social_Widget в WordPress
 
 	function register_social_widget() {
 		register_widget( 'Social_Widget' );
