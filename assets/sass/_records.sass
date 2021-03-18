@@ -5,7 +5,7 @@
 
 .records
     &-list
-        width: 848px
+        width: 75%
         margin: 0
         padding: 0
         background-color: #fff
@@ -23,11 +23,10 @@
             border-bottom: 1px solid #D9DADB
             position: absolute
             bottom: 0
-            width: 798px
+            width: calc( 100% - 50px )
 
     &-img
         height: 195px
-        width: 336px
         object-fit: cover
     &-name
         margin-left: 25px
@@ -35,7 +34,6 @@
         display: flex
         align-items: center
     &-title
-        width: 437px
         font-family: "Roboto Slab" sans-serif
         font-style: normal
         font-weight: bold
@@ -75,3 +73,20 @@
             fill: #BCBFC2
         &-likes-count
             color: #939699
+@media screen and ( max-width: 1024px )
+    .records
+        &-list
+            width: 66%
+        &-item
+            flex-wrap: wrap
+            justify-content: start
+        &-name
+            margin-left: 0
+            margin-top: 25px
+@media screen and ( max-width: 768px )
+    .main-records
+        flex-wrap: wrap
+    .records
+        &-list
+            width: 100%
+            margin-bottom: 30px

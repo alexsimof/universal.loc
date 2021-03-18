@@ -5,6 +5,7 @@
                 <div class="footer-menu-bar">
 
                     <?php dynamic_sidebar( 'sidebar-footer' ); ?>
+                    
                 </div>
                 <!-- footer-menu-bar -->
                 <div class="footer-info">

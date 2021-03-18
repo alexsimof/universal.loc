@@ -21,7 +21,6 @@
         padding: 30px 25px 35px 25px
         justify-content: space-between
         position: relative
-
         &:not(:last-child)::after
             content: ''
             position: absolute
@@ -40,3 +39,22 @@
         font-weight: 400
         font-size: 14px
         line-height: 20px
+
+@media screen and ( max-width: 1024px )
+    .article
+        &-list
+            flex-wrap: wrap
+        &-item
+            width: 50%
+        &-permalink
+            width: 215px
+@media screen and ( max-width: 768px )
+    .article
+        &-list
+            margin-top: 30px
+        &-permalink
+            width: 160px
+@media screen and ( max-width: 576px )
+    .article
+        &-item
+            width: 100%

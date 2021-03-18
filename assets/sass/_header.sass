@@ -13,6 +13,8 @@
         list-style: none
         display: flex
         align-items: center
+        &-toggle
+            display: none
 
 .menu-item
     a
@@ -24,7 +26,7 @@
 .search
     &-form
         position: relative
-        width: 270px
+        width: 25%
         height: 40px
         input
             position: absolute
@@ -50,3 +52,72 @@
             background-color: transparent
             border: none
             cursor: pointer
+
+@media screen and ( max-width: 1200px )
+    .menu-item
+        a
+            color: #fff
+            text-decoration: none
+            margin-left: 10px
+            margin-right: 10px
+@media screen and ( max-width: 1024px )
+    .header
+        &-wrapper
+            flex-wrap: wrap
+        .header
+            &-nav
+                order: 5
+                padding-top: 20px
+        .menu-item
+            a
+                margin-left: 0
+                margin-right: 30px
+    .search
+        &-form
+            width: 30%
+@media screen and ( max-width: 768px )
+    .header
+        &-wrapper
+            position: relative
+        &-nav
+            display: none
+            position: absolute
+            right: 0
+            top: 55px
+            width: calc( 30% + 40px )
+            background-color: #fff
+            padding: 30px
+            z-index: 90
+            border-radius: 10px
+            box-shadow: 1px 1px 10px rgba(#262D33, 0.2)
+        &-menu
+            flex-direction: column
+            align-items: flex-start
+            a
+                color: #000
+            &-toggle
+                display: flex
+                width: 30px
+                height: 20px
+                justify-content: space-between
+                align-items: center
+                flex-direction: column
+                margin-left: 10px
+                span
+                    width: 100%
+                    height: 1px
+                    background-color: #fff
+        .menu
+            &-item
+                &:not(:last-child)
+                    margin-bottom: 20px
+    .search
+        &-form
+            margin-left: auto
+            width: 30%
+@media screen and ( max-width: 576px )
+    .header-wrapper
+        .search-form
+            order: 5
+            width: 100%
+            margin-top: 20px

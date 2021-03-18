@@ -70,11 +70,13 @@ body
         color: #262D33
         text-transform: capitalize
     &-social
+        text-align: center
         .widget
             &-link
                 &-facebook, &-insta, &-twitter, &-youtube
                     text-decoration: none
-
+                    &:not(:last-child)
+                        margin-right: 10px
             &-top-title
                 text-align: center
                 padding: 30px 25px
@@ -86,7 +88,6 @@ body
                 text-transform: none
         &-facebook, &-insta, &-twitter, &-youtube
             margin-bottom: 20px
-            margin-left: 10px
 
 .widget_tag_cloud
     .widget-top-title
@@ -125,7 +126,7 @@ body
             border-bottom: 1px solid #D9DADB
             position: absolute
             bottom: 0
-            width: 213px
+            width: calc( 100% - 50px )
         &::before
             counter-increment: section
             content: counter(section)
@@ -152,3 +153,23 @@ body
         height: 60px
     &-info
         padding-left: 10px
+@media screen and ( max-width: 1200px )
+    .sidebar
+        &-front-page
+            width: 30%
+            margin: 0
+@media screen and ( max-width: 1024px )
+    .widget-social
+        .widget-link
+            &-facebook, &-insta, &-twitter, &-youtube
+                &:not(:last-child)
+                    margin-right: 0
+@media screen and ( max-width: 768px )
+    .sidebar
+        &-front-page
+            width: 100%
+    .widget-social
+        .widget-link
+            &-facebook, &-insta, &-twitter, &-youtube
+                &:not(:last-child)
+                    margin-right: 10px

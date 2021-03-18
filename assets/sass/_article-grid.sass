@@ -8,10 +8,11 @@
         margin: 0
         padding: 0
         list-style: none
-        max-width: 850px
+        width: 74%
         display: grid
-        grid-template-columns: repeat(3, 1fr)
-        grid-template-rows: minmax(min, max) repeat(2, 1fr)
+        grid-template-columns: repeat(auto-fit, minmax(30%, 1fr))
+        grid-template-rows: repeat(3, minmax(200px, max-content))
+        grid-auto-rows: minmax(200px, max-content)
         grid-gap: 30px
 
         &-item
@@ -20,7 +21,6 @@
             overflow: hidden
             &-1
                 grid-area: 1 / 1 / 2 / 3
-
                 height: 370px
                 position: relative
                 .category-name
@@ -43,7 +43,7 @@
                             margin: 0
                             padding-top: 20px
                             padding-bottom: 25px
-                            width: 360px
+                            width: 90%
                             font-family: Roboto Slab
                             font-style: normal
                             font-weight: bold
@@ -186,21 +186,19 @@
                         padding: 15px 25px 30px
                         margin: 0
             &-default
-                height: 170px
                 position: relative
                 .article-grid
                     &-permalink
                         position: absolute
                         left: 0
                         top: 0
+                        padding: 25px 25px 30px
                         width: 100%
                         height: 100%
                         text-decoration: none
                     &-title
                         margin: 0
-                        margin-top: 25px
-                        margin-left: 25px
-                        margin-bottom: 5px
+                        margin-bottom: 20px
                         font-family: Roboto Slab
                         font-style: normal
                         font-weight: bold
@@ -209,14 +207,43 @@
                         color: #262D33
                     &-texte
                         margin: 0
-                        margin-left: 25px
                         margin-bottom: 10px
                         width: 213px
                         font-size: 14px
                         line-height: 20px
                         color: #4B5157
                     &-date
-                        padding-left: 25px
                         font-size: 12px
                         line-height: 15px
                         color: #939699
+
+@media screen and ( max-width: 1200px )
+    .article
+        &-grid
+            grid-template-columns: repeat(auto-fit, minmax(40%, 1fr))
+@media screen and ( max-width: 1024px )
+    .article
+        &-grid
+            width: 66%
+            grid-template-columns: 1fr
+            grid-template-rows: repeat(3, minmax(300px, max-content))
+            &-item
+                grid-area: auto
+@media screen and ( max-width: 768px )
+    .main
+        &-grid
+            flex-wrap: wrap
+    .article
+        &-grid
+            width: 100%
+            margin-bottom: 30px
+@media screen and ( max-width: 576px )
+    .article-grid-item-1
+        height: 450px
+        .article-grid
+            &-permalink
+                padding: 35px 0 13px 20px
+            &-title
+                width: 90%
+            &-info
+                padding: 13px 20px

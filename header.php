@@ -30,7 +30,11 @@
                 // Поиск
                 get_search_form();
             ?>
-            
+            <a href="#" class="header-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
         </div>
 
 

@@ -103,7 +103,7 @@
     background-color: #fff
     border-radius: 10px
     overflow: hidden
-    margin-top: 20px
+    margin-top: 30px
     display: flex
     flex-direction: column
     justify-content: space-between
@@ -143,3 +143,17 @@
     max-width: 214px
     color: #4B5157
     margin-bottom: 45px
+@media screen and ( max-width: 1024px )
+  .special
+    &-grid
+      flex-wrap: wrap
+  .photo-report
+    width: 100%
+    margin-bottom: 30px
+  .other
+    width: 100%
+@media screen and ( max-width: 576px )
+  .other-posts
+    flex-wrap: wrap
+    .other-post
+      width: 100%
