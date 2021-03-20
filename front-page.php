@@ -22,7 +22,7 @@
                                     else {
                                         echo get_template_directory_uri().'/assets/images/default-images.png" />';
                                     } 
-                                ?>" alt="Расширение Chrome" class="post-thumb">
+                                ?>" alt="Расширение Chrome" class="posts-thumb">
 
                     <?php $author_id = get_the_author_meta('ID'); ?>
                     <a href="<?php echo get_author_posts_url($author_id); ?>" class="author">
@@ -66,12 +66,12 @@
                         'offset' => 1,
                         'category_name'  => 'javaScript, css, html, web design',
                     ]);
-
+ 
                     if( $myposts ){
                     	foreach( $myposts as $post ){
                     		setup_postdata( $post );
                     ?>
-                    <li class="post">
+                    <li class="posts">
                             <?php 
                                 foreach (get_the_category() as $category) {
                                     printf(
@@ -506,7 +506,6 @@
                             break; 
                                 // второй пост
                             default: ?>
-
                                 <div class="other-posts other-posts-default">
                                     <a href="#" class="other-post">
                                         <h4 class="other-post-title">Самые крутые функции в...</h4>

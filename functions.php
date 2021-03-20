@@ -566,3 +566,13 @@ function edit_widget_tag_cloud($args){
 
 	return $args;
 };
+// ..меняем конструкцию [...] 
+
+add_filter('excerpt_more', function($more) {
+	return ' ...';
+});
+
+// ..сокращаем длину отрывка записи
+add_filter( 'excerpt_length', function(){
+	return 25;
+} );
