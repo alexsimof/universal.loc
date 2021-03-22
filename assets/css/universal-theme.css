@@ -86,6 +86,42 @@ body {
   display: none;
 }
 
+.header .custom-logo {
+  width: 40px;
+}
+
+.header-light {
+  background-color: #fff;
+}
+
+.header-light .logo-name {
+  color: #4592FF;
+}
+
+.header-light .menu-item a {
+  color: #939699;
+}
+
+.header-light .search-form input {
+  background-color: #F5F5F5;
+}
+
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logo-name {
+  font-family: "Roboto Slab";
+  font-size: 24px;
+  color: #fff;
+  margin-left: 10px;
+}
+
 .menu-item a {
   color: #fff;
   text-decoration: none;
@@ -1792,6 +1828,10 @@ body {
   margin-bottom: 0;
 }
 
+.footer .logo {
+  width: 40px;
+}
+
 @media screen and (max-width: 768px) {
   .footer-menu-bar {
     display: none;
@@ -1822,6 +1862,10 @@ body {
 .post-header {
   padding: 63px 0 72px;
   color: #fff;
+}
+
+.post-header-wrapper {
+  position: relative;
 }
 
 .post-header-nav {
@@ -1916,12 +1960,103 @@ body {
   right: 0;
 }
 
+.post-author {
+  position: absolute;
+  right: 0;
+  background-color: #fff;
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: centre;
+      -ms-flex-align: centre;
+          align-items: centre;
+  overflow: hidden;
+  max-width: 296px;
+  border: 1px solid #D9DADB;
+}
+
+.post-author .avatar {
+  border-radius: 50%;
+}
+
+.post-author-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 35px 25px 20px;
+}
+
+.post-author .author-name {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 25px;
+  color: #262D33;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.post-author .author-rank {
+  color: #4B5157;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 15px;
+}
+
+.post-author .author-numer {
+  color: #262D33;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.post-author-link {
+  text-align: center;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 20px;
+  color: #262D33;
+  padding: 15px 25px;
+  border-top: 1px solid #D9DADB;
+}
+
+.post-footer a {
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 20px;
+  color: #262D33;
+  border: 1px solid #D9DADB;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+
 .header-info {
   margin: 0;
   padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  opacity: 0.85;
 }
 
 .header-info svg {
@@ -1944,4 +2079,94 @@ body {
 .header-info .info-likes-count {
   font-size: 12px;
   line-height: 15px;
+}
+
+.post-content {
+  padding-top: 60px;
+  padding-bottom: 30px;
+}
+
+.post-content p {
+  font-size: 18px;
+  line-height: 30px;
+  color: #4B5157;
+  margin: 30px 0;
+  max-width: 1440px;
+}
+
+.post-content p:first-child {
+  max-width: 623px;
+}
+
+.post-content .has-drop-cap:not(:focus):first-letter {
+  color: #4592FF;
+  font-family: "Lato Black", sans-serif;
+}
+
+.post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.post h1 {
+  font-size: 30px;
+}
+
+.post h2 {
+  font-size: 25px;
+}
+
+.post h3 {
+  font-size: 22px;
+}
+
+.post h4 {
+  font-size: 18px;
+}
+
+.post h5 {
+  font-size: 16px;
+}
+
+.post h6 {
+  font-size: 14px;
+}
+
+.post ul, .post ol {
+  margin-top: 20px;
+  padding: 0;
+  margin-left: 20px;
+  font-size: 18px;
+  line-height: 30px;
+}
+
+.post blockquote {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+  margin-left: 0;
+  margin-top: 80px;
+  margin-bottom: 45px;
+  position: relative;
+}
+
+.post blockquote::before {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  content: '';
+  background-image: url(../images/quote.svg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  width: 70px;
+  height: 70px;
+  z-index: -1;
+}
+
+.post cite {
+  font-style: normal;
 }

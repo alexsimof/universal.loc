@@ -82,8 +82,8 @@
                                     );
                                 }
                             ?>
-                        <a class="post-permalink" href="<?php echo get_the_permalink() ?>">
-                            <h4 class="post-title"><?php echo mb_strimwidth(get_the_title(), 0, 60, ' ... '); ?></h4>
+                        <a class="posts-permalink" href="<?php echo get_the_permalink() ?>">
+                            <h4 class="posts-title"><?php echo mb_strimwidth(get_the_title(), 0, 60, ' ... '); ?></h4>
                         </a>
                     </li>
                     <?php 

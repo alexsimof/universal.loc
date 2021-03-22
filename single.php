@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php get_header('post'); ?>
 
 	<main id="primary" class="site-main">
 

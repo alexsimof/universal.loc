@@ -13,10 +13,10 @@
         <div class="header-wrapper">
             <?php
                 if( has_custom_logo() ){
-                    // логотип есть выводим его
-                    the_custom_logo();
+                    echo '<div class="logo">' . get_custom_logo() . 
+                    '<span class="logo-name">' . get_bloginfo('name') . '</span></div>';
                 } else {
-                    echo 'Universal';
+                    echo '<span class="logo-name">' . get_bloginfo('name') . '</span>';
                 }
             
                 wp_nav_menu( [
@@ -36,7 +36,5 @@
                 <span></span>
             </a>
         </div>
-
-
     </div>
 </header>
