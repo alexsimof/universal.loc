@@ -148,10 +148,16 @@
 					/* translators: 1: list of tags. */
 					printf( '<span class="post-footer-links">' . esc_html__( '%1$s', 'universal-theme' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				}
+
 			?>
+			<span class="divider"></span>
 
-			
+			<?php meks_ess_share(); ?>
+		
 		</div>
-
 	</div> <!-- .end container -->
+	
+		
+	<?php get_sidebar('footer-post'); ?>
+	
 </article>

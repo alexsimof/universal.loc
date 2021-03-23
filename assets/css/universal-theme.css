@@ -117,9 +117,10 @@ body {
 
 .logo-name {
   font-family: "Roboto Slab";
-  font-size: 24px;
+  font-size: 26px;
   color: #fff;
   margin-left: 10px;
+  text-decoration: none;
 }
 
 .menu-item a {
@@ -1233,6 +1234,55 @@ body {
   padding-left: 10px;
 }
 
+.sidebar-footer-page {
+  background-color: #F5F5F5;
+}
+
+.sidebar-footer-post {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 60px 113px 90px;
+}
+
+.footer-post-link {
+  text-decoration: none;
+}
+
+.footer-post-title {
+  font-size: 16px;
+  line-height: 25px;
+  color: #262D33;
+  max-width: 263px;
+}
+
+.footer-img {
+  width: 263px;
+  height: 180px;
+  border-radius: 10px;
+}
+
+.footer-block-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer-block-info .info-footer-icon {
+  margin-right: 5px;
+  fill: #BCBFC2;
+}
+
+.footer-block-info .info-footer-count {
+  margin-right: 10px;
+  color: #939699;
+}
+
 @media screen and (max-width: 1200px) {
   .sidebar-front-page {
     width: 30%;
@@ -2110,7 +2160,7 @@ body {
 }
 
 .post h1 {
-  font-size: 30px;
+  font-size: 55px;
 }
 
 .post h2 {
@@ -2169,4 +2219,31 @@ body {
 
 .post cite {
   font-style: normal;
+}
+
+.post-footer .meks_ess {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  margin-bottom: 90px;
+}
+
+.post-footer .meks_ess a {
+  max-width: 180px;
+  line-height: 30px;
+}
+
+.post-footer .meks_ess_share_label h5 {
+  font-family: Roboto Slab;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 30px;
+}
+
+.post-footer .divider {
+  border-top: 1px solid #D9DADB;
+  display: block;
+  width: 623px;
+  margin-top: 60px;
+  margin-bottom: 30px;
 }

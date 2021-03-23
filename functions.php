@@ -74,14 +74,177 @@ function universal_theme_widgets_init() {
 			'after_title'   => '',
 		)
 	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__( 'Сайдбар в подвале записи', 'universal-theme' ),
+			'id'            => 'sidebar-post',
+			'description'   => esc_html__( 'Добавте виджет сюда...', 'universal-theme' ),
+			'before_widget' => '<section id="%1$s" class="sidebar-footer-post %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '',
+			'after_title'   => '',
+		)
+	);
 }
 add_action( 'widgets_init', 'universal_theme_widgets_init' );
 
 
-
 /**
- *          ------------------Добавление нового виджета Recent_Posts.---------------
+ *          ------------------Добавление нового виджета Footer_Posts.---------------
  */
+class Footer_Posts extends WP_Widget {
+
+	// Регистрация виджета используя основной класс
+	function __construct() {
+		// вызов конструктора выглядит так:
+		// __construct( $id_base, $name, $widget_options = array(), $control_options = array() )
+		parent::__construct(
+			'footer_posts', // ID виджета, если не указать (оставить ''), то ID будет равен названию класса в нижнем регистре: footer_posts
+			'Записи в футоре поста',
+			array( 'description' => 'Записи в футоре поста', 'classname' => 'widget-footer-post', )
+		);
+
+		// скрипты/стили виджета, только если он активен
+
+		if ( is_active_widget( false, false, $this->id_base ) || is_customize_preview() ) {
+			add_action('wp_enqueue_scripts', array( $this, 'add_footer_posts_scripts' ));
+			add_action('wp_head', array( $this, 'add_footer_posts_style' ) );
+		}
+	}
+
+	/**
+	 * Вывод виджета во Фронт-энде
+	 *
+	 * @param array $args     аргументы виджета.
+	 * @param array $instance сохраненные данные из настроек
+	 */
+	function widget( $args, $instance ) {
+
+		$param_cat = $instance['cat_id']; // Узнаем ID категории
+		$number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 4;
+		
+		echo $args['before_widget'];
+
+		if ( ! empty($number ) ) {
+			
+			global $post;
+			$postslist = get_posts( array( 'posts_per_page' => $number, 'order'=> 'ASC', 'orderby' => 'title' ) );
+			foreach ( $postslist as $post ){
+				setup_postdata($post);
+				?>
+				
+				<a href="<?php the_permalink(); ?>" class="footer-post-link">
+					<img class="footer-img" src="<?php echo get_the_post_thumbnail_url( null, 'medium' ); ?>" alt="">
+					<h3 class="footer-post-title"> <?php echo mb_strimwidth(get_the_title(), 0, 35, ' ... '); ?></h3>
+					
+					<div class="footer-block-info">
+
+						<svg width="15" height="10" class="icon info-footer-icon">
+                                <use xlink:href="<?php echo get_template_directory_uri()?>/assets/images/sprite.svg#eye"></use>
+                        </svg>
+						<span class="info-footer-count"> <?php comments_number( '0', '1', '%'); ?></span>
+						
+						<svg width="15" height="15" class="icon info-footer-icon">
+                                <use xlink:href="<?php echo get_template_directory_uri()?>/assets/images/sprite.svg#comment"></use>
+                        </svg>
+						<span class="info-footer-count"> <?php comments_number( '0', '1', '%'); ?></span>
+
+					</div>
+				
+				</a>
+				
+				<?php
+			}
+			wp_reset_postdata();
+			
+		}
+		
+		echo $args['after_widget'];
+	}
+
+	/**
+	 * Админ-часть виджета
+	 *
+	 * @param array $instance сохраненные данные из настроек
+	 */
+	function form( $instance ) {
+		$cat = @ $instance['cat_id'] ?: '5'; 'Введите категорию';
+		$number = @ $instance['number'] ?: '4';
+
+		?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'cat' ); ?>"><?php _e( 'ID Категории:' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'cat_id' ); ?>" name="<?php echo $this->get_field_name( 'cat_id' ); ?>" type="text" value="<?php echo esc_attr( $cat ); ?>">
+		</p>
+		
+        <p>
+			<label for="<?php echo $this->get_field_id( 'number' ); ?>"><?php _e( 'Количество записей:' ); ?></label>
+			<input class="tiny-text" id="<?php echo $this->get_field_id( 'number' ); ?>" name="<?php echo $this->get_field_name( 'number' ); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" />
+		</p>
+		
+
+		<?php 
+	}
+
+	/**
+	 * Сохранение настроек виджета. Здесь данные должны быть очищены и возвращены для сохранения их в базу данных.
+	 *
+	 * @see WP_Widget::update()
+	 *
+	 * @param array $new_instance новые настройки
+	 * @param array $old_instance предыдущие настройки
+	 *
+	 * @return array данные которые будут сохранены
+	 */
+	function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['cat_id'] = ( ! empty( $new_instance['cat_id'] ) ) ? strip_tags( $new_instance['cat_id'] ) : '';
+		$instance['number'] = ( ! empty( $new_instance['number'] ) ) ? strip_tags( $new_instance['number'] ) : '';
+		
+		return $instance;
+	}
+
+	// скрипт виджета
+	function add_footer_posts_scripts() {
+		// фильтр чтобы можно было отключить скрипты
+		if( ! apply_filters( 'show_my_widget_script', true, $this->id_base ) )
+			return;
+
+		$theme_url = get_stylesheet_directory_uri();
+
+		wp_enqueue_script('my_widget_script', $theme_url .'/my_widget_script.js' );
+	}
+
+	// стили виджета
+	function add_footer_posts_style() {
+		// фильтр чтобы можно было отключить стили
+		if( ! apply_filters( 'show_my_widget_style', true, $this->id_base ) )
+			return;
+		?>
+		<style type="text/css">
+			.my_widget a{ display:inline; }
+		</style>
+		<?php
+	}
+
+} 
+// конец класса Footer_Posts
+// регистрация Footer_Posts в WordPress
+
+	function register_footer_posts() {
+		
+		register_widget( 'Footer_Posts' ); 
+	}
+
+add_action( 'widgets_init', 'register_footer_posts' );
+
+// ******-------конец footer-Posts
+
+
+
+
+        //   ------------------Добавление нового виджета Recent_Posts.---------------
+
 class Recent_Posts extends WP_Widget {
 
 	// Регистрация виджета используя основной класс
@@ -218,14 +381,14 @@ class Recent_Posts extends WP_Widget {
 		<?php
 	}
 
-} 
+}
 // конец класса Recent_Posts
 
 // регистрация Recent_Posts в WordPress
 
-function register_recent_posts() {
-	register_widget( 'Recent_Posts' );
-}
+	function register_recent_posts() {
+		register_widget( 'Recent_Posts' );
+	}
 add_action( 'widgets_init', 'register_recent_posts' );
 
 // ******-------конец Recent-Posts
@@ -566,7 +729,7 @@ function edit_widget_tag_cloud($args){
 
 	return $args;
 };
-// ..меняем конструкцию [...] 
+// ..меняем конструкцию в конце отрывка [...] 
 
 add_filter('excerpt_more', function($more) {
 	return ' ...';
@@ -582,3 +745,5 @@ function plural_form($number, $after) {
 	$cases = array (2, 0, 1, 1, 1, 2);
 	echo $number.' '.$after[ ($number%100>4 && $number%100<20)? 2: $cases[min($number%10, 5)] ];
 }
+
+
