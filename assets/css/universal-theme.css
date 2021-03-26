@@ -146,6 +146,7 @@ body {
   border-radius: 10px;
   border: none;
   padding: 10px 25px;
+  color: #262D33;
 }
 
 .search-form input::-webkit-input-placeholder {
@@ -278,7 +279,7 @@ body {
   }
 }
 
-.home {
+body {
   background-color: #e5e5e5;
 }
 
@@ -764,6 +765,10 @@ body {
   margin-right: 5px;
 }
 
+.article-grid-item-1 .article-grid-comments span {
+  font-size: 16px;
+}
+
 .article-grid-item-2 {
   -ms-grid-row: 1;
   -ms-grid-row-span: 1;
@@ -907,6 +912,10 @@ body {
 
 .article-grid-item-2 .article-grid-info .author-info-comments img.comments-icon {
   margin-left: auto;
+}
+
+.article-grid-item-2 .article-grid-info .author-info-comments .comments-count {
+  font-size: 16px;
 }
 
 .article-grid-item-3 {
@@ -1373,6 +1382,7 @@ body {
 
 .records-img {
   height: 195px;
+  width: 293px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -2477,4 +2487,68 @@ body {
 
 .comment-submit {
   margin-left: 97px;
+}
+
+.main-records-title h2 {
+  font-family: Roboto Slab;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
+  color: #262D33;
+}
+
+.search-pagination {
+  max-width: 848px;
+  margin-top: 40px;
+  margin-bottom: 100px;
+}
+
+.search-pagination .nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.search-pagination .page-numbers {
+  padding: 17px 25px;
+  color: #262D33;
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+.search-pagination .page-numbers:not(:last-child) {
+  border-right: 1px solid #D9DADB;
+}
+
+.search-pagination .prev::before {
+  content: '';
+  width: 15px;
+  height: 7px;
+  display: inline-block;
+  background: url(../images/arrow-prev.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 10px;
+}
+
+.search-pagination .next::after {
+  content: '';
+  width: 15px;
+  height: 7px;
+  display: inline-block;
+  background: url(../images/arrow-next.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 10px;
+}
+
+.search-pagination .current {
+  color: #4592FF;
 }
