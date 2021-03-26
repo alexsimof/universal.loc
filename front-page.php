@@ -373,7 +373,7 @@
                                 <use xlink:href="<?php echo get_template_directory_uri()?>/assets/images/sprite.svg#heart"></use>
                             </svg>
                             
-                            <span class="info-likes-count"> <?php comments_number( '0', '1', '%'); ?></span>
+                            <span class="info-likes-count"><?php comments_number( '0', '1', '%'); ?></span>
                         </div>
                     </div>
                 </li>
