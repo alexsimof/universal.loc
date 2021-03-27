@@ -747,3 +747,34 @@ function plural_form($number, $after) {
 }
 
 
+/* ..отправка формы */
+add_action( 'wp_enqueue_scripts', 'adminAjax_data', 99 );
+function adminAjax_data(){
+
+	wp_localize_script( 'jquery', 'adminAjax',
+		array(
+			'url' => admin_url('admin-ajax.php')
+		)
+	);
+
+}
+
+add_action( 'wp_ajax_contacts_form', 'ajax_form');
+add_action( 'wp_ajax_nopriv_contacts_form', 'ajax_form');
+function ajax_form() {
+	$contact_name = $_POST['contact_name'];
+	$contact_email = $_POST['contact_email'];
+	$contact_comment = $_POST['contact_comment'];
+	$message = 'Пользователь оставил свои данные: ' . $contact_name;
+
+	$headers = 'From: А. Симонов <alex.simon-ov@yandex.ru>' . "\r\n";
+	$sent_message = wp_mail('alex.simonof@gmail.com', 'Новая заявка', $message, $headers);
+	if ($sent_message) {
+		echo 'Все получилось!';
+	} else {
+		echo 'Где-то ошибка';
+	}
+
+	// выход нужен для того, чтобы в ответе не было ничего лишнего, только то что возвращает функция
+	wp_die();
+}

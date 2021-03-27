@@ -2715,3 +2715,73 @@ body {
 .category-pagination .current {
   color: #4592FF;
 }
+
+.section-dark {
+  background: #262D33;
+  color: #fff;
+  padding: 50px 122px;
+}
+
+.page-title {
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
+  margin-top: 0;
+  margin-bottom: 27px;
+}
+
+.contacts-title {
+  font-size: 18px;
+  line-height: 30px;
+  margin-bottom: 28px;
+}
+
+.contacts-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.left-contact-left {
+  margin-right: 80px;
+}
+
+.contact-right a, .contact-right address {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-style: normal;
+  margin-bottom: 15px;
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.wpcf7-form, .contacts-form {
+  max-width: 460px;
+}
+
+.wpcf7-form input, .contacts-form input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #939699;
+  margin-bottom: 10px;
+  height: 40px;
+}
+
+.wpcf7-form textarea, .contacts-form textarea {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #939699;
+  margin-bottom: 20px;
+  min-height: 120px;
+  resize: none;
+}
