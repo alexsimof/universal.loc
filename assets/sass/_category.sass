@@ -62,3 +62,43 @@
       display: flex
       align-items: center
       fill: #BCBFC2
+
+.category-pagination
+  margin-top: 40px
+  margin-bottom: 100px
+  .nav-links
+    display: flex
+    justify-content: center
+    background-color: #fff
+    border-radius: 10px
+  .page-numbers
+    padding: 17px 25px
+    color: #262D33
+    font-weight: 900
+    font-size: 14px
+    line-height: 20px
+    text-decoration: none
+    &:not(:last-child)
+      border-right: 1px solid #D9DADB
+  .prev
+    &::before
+      content: ''
+      width: 15px
+      height: 7px
+      display: inline-block
+      background: url(../images/arrow-prev.svg)
+      background-repeat: no-repeat
+      background-position: center
+      margin-right: 10px
+  .next
+    &::after
+      content: ''
+      width: 15px
+      height: 7px
+      display: inline-block
+      background: url(../images/arrow-next.svg)
+      background-repeat: no-repeat
+      background-position: center
+      margin-left: 10px
+  .current
+    color: #4592FF
