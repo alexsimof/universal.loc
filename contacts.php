@@ -23,9 +23,29 @@ get_header();
       <!-- /.left -->
       <div class="contact-right">
         <h2 class="contacts-title">Или по этим контактам</h2>
-        <a href="mailto:world@forpeople.studio">world@forpeople.studio </a>
-        <address>3522 I-75, Business Spur Sault Sainte Marie, MI, 49783</address>
-        <a href="tel:+2 800 089 45-34">+2 800 089 45-34</a>
+        <!-- <?php
+                  // проверяем есть ли email
+        $email = get_post_meta( get_the_ID(), 'email', true);
+        if ($email) {echo '<a href="mailto:' . $email . '">' . $email . ' </a>';}
+                 // проверяем есть ли адресс
+        $address = get_post_meta( get_the_ID(), 'address', true);
+        if ($address) { echo '<address>' . $address . '</address>';}
+                 // проверяем есть ли телефон
+        $phone = get_post_meta( get_the_ID(), 'phone', true);
+        if ($phone) { echo '<a href="tel:' . $phone . '">' . $phone . ' </a>';}
+        ?> -->
+        <?php
+        $email = get_field('email');
+        if ($email) {echo '<a href="mailto:' . $email . '">' . $email . ' </a>';}
+
+        $address = get_field('adress');
+        if ($address) { echo '<address>' . $address . '</address>';}
+
+        $phone = get_field('phone');
+        if ($phone) { echo '<a href="tel:' . $phone . '">' . $phone . ' </a>';}
+
+        ?>
+        
       </div>
       <!-- /.right -->
     </div>
