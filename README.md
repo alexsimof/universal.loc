@@ -1,2 +1,2 @@
 # Universal.loc
-## Учебный проект
+## Учебный проект WordPress
